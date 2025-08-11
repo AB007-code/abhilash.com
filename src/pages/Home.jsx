@@ -2,6 +2,9 @@ import React from "react";
 import { ThemeToggle } from "../components/ThemeToggle";
 import StarBackground from "../components/StarBackground";
 import Navbar from "../components/Navbar";
+import HeroSection from "../components/HeroSection";
+import About from "../components/About";
+import Skill from "../components/Skill";
 
 const Home = () => {
   return (
@@ -13,6 +16,11 @@ const Home = () => {
       {/* Navbaer */}
       <Navbar />
       {/* Main Content */}
+      <main>
+        <HeroSection />
+        <About />
+        <Skill />
+      </main>
 
       {/* Footer */}
     </div>
