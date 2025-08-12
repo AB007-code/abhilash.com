@@ -54,7 +54,7 @@ const StarBackground = () => {
 
     setMeteor(newMeteor);
   };
-  console.log(star);
+  // console.log(star);
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {star.map((star) => (

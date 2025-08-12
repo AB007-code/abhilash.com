@@ -8,15 +8,29 @@ import {
   Twitter,
 } from "lucide-react";
 import { cn } from "../lib/utils";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useToast } from "../hooks/use-toast";
 
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [inputValue, setInputvalue] = useState({
+    name: "",
+    email: "",
+    message: "",
+    user: "",
+  });
+  const changeInput = (e) => {
+    let { name, value } = e.target;
+    setInputvalue({ ...inputValue, [name]: value });
+  };
+  useEffect(() => {
+    handleSubmit();
+  }, []);
 
-  const handleSubmit = (e) => {
+  let handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(inputValue);
     setIsSubmitting(true);
     setTimeout(() => {
       toast({
@@ -25,6 +39,26 @@ const Contact = () => {
       });
       setIsSubmitting(false);
     }, 1500);
+
+    await fetch("http://localhost:5000/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...inputValue, user: "client" }),
+    });
+    // const data1 = await res.json();
+    // console.log(data.body);
+
+    // let res2 = await fetch("http://localhost:5000/send-email", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ ...inputValue, user: "admin" }),
+    // });
+    // const data2 = await res2.json();
+    // console.log(data2.body);
   };
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
@@ -108,7 +142,11 @@ const Contact = () => {
           <div className="bg-card p-8 rounded-lg shadow-xs">
             <h3 className="text-2xl font-semibold mb-6">Send a message</h3>
 
-            <form className="space-y-6" onSubmit={handleSubmit}>
+            <form
+              className="space-y-6"
+              onSubmit={handleSubmit}
+              onChange={changeInput}
+            >
               <div>
                 <label
                   htmlFor="name"
