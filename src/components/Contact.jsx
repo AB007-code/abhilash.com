@@ -10,7 +10,8 @@ import {
 import { cn } from "../lib/utils";
 import React, { useEffect, useState } from "react";
 import { useToast } from "../hooks/use-toast";
-
+let link = import.meta.env.VITE_BACKEND_URL;
+console.log(link);
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,7 +41,7 @@ const Contact = () => {
       setIsSubmitting(false);
     }, 1500);
 
-    await fetch("http://localhost:5000/send-email", {
+    await fetch(`${link}/send-email`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
