@@ -8,19 +8,22 @@ import {
   Twitter,
 } from "lucide-react";
 import { cn } from "../lib/utils";
-import React from "react";
+import React, { useState } from "react";
 import { useToast } from "../hooks/use-toast";
 
 const Contact = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     setTimeout(() => {
       toast({
         title: "Message Sent!",
         description: "Thank you for your message. I'll get back to you soon.",
       });
+      setIsSubmitting(false);
     }, 1500);
   };
   return (
@@ -158,11 +161,12 @@ const Contact = () => {
 
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className={cn(
                   "cosmic-button w-full flex items-center justify-center gap-2"
                 )}
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
                 <Send size={16} />
               </button>
             </form>
