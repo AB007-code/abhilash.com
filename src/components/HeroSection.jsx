@@ -19,10 +19,12 @@ const HeroSection = () => {
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground max-2-2xl mx-auto opacity-0 animate-fade-in-delay-3">
-            I am an Ai Equipped Mern Stack Developer and specialize in Gen-Ai
-            Automation Workflow. I build interfaces that are both beautiful and
-            functional.
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-3">
+            Full Stack Developer (MERN / Next.js) with experience building
+            scalable web applications, AI-powered systems, and automation
+            workflows. Skilled in React, Node.js, FastAPI, and web scraping
+            (Playwright, Selenium), I create high-performance, user-centric
+            solutions that are both functional and visually engaging.
           </p>
 
           <div className="pt-4 opacity-0 animate-fade-in-delay-4">

@@ -13,17 +13,20 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.screenY > 10);
+      setIsScrolled(window.scrollY > 10);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
     <nav
       className={cn(
-        "fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
+        "fixed w-full z-40 border-b border-white/10 backdrop-blur-md transition-all duration-300",
+        isScrolled
+          ? "py-3 bg-background/85 shadow-[0_10px_30px_rgba(0,0,0,0.25)]"
+          : "py-5 bg-background/55 shadow-[0_4px_20px_rgba(0,0,0,0.12)]"
       )}
     >
       <div className="container flex items-center justify-between">

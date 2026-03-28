@@ -19,7 +19,7 @@ const StarBackground = () => {
   }, []);
   const generateStar = () => {
     const numberOfStars = Math.floor(
-      (window.innerHeight * window.innerWidth) / 10000
+      (window.innerHeight * window.innerWidth) / 10000,
     );
 
     const newStars = [];
