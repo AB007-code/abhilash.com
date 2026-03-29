@@ -5,11 +5,11 @@ const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 py-24"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 sm:py-24"
     >
       <div className="container max-w-6xl mx-auto z-10">
-        <div className="grid items-center gap-10 md:grid-cols-[0.82fr_1.18fr] lg:gap-14">
-          <div className="flex justify-center md:justify-start opacity-0 animate-fade-in-delay-1">
+        <div className="flex flex-col items-center gap-10 md:grid md:grid-cols-[0.82fr_1.18fr] md:items-center lg:gap-14">
+          <div className="flex w-full justify-center md:justify-start opacity-0 animate-fade-in-delay-1">
             <div className="relative">
               <div className="absolute inset-0 rounded-[2rem] bg-primary/15 blur-3xl scale-95" />
               <div className="absolute inset-0 rounded-[2rem] bg-linear-to-br from-primary/12 via-transparent to-transparent" />
@@ -17,14 +17,14 @@ const HeroSection = () => {
                 <img
                   src="/projects/abhilash.jpg"
                   alt="Abhilash Chaurasiya"
-                  className="h-[280px] w-[245px] rounded-[1.5rem] object-cover object-top sm:h-[340px] sm:w-[285px] md:h-[390px] md:w-[315px]"
+                  className="h-[250px] w-[220px] rounded-[1.5rem] object-cover object-top sm:h-[320px] sm:w-[280px] md:h-[390px] md:w-[315px]"
                 />
               </div>
             </div>
           </div>
 
-          <div className="space-y-6 text-center md:text-left md:max-w-2xl">
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.08]">
+          <div className="space-y-5 text-center md:text-left md:max-w-2xl">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight leading-[1.08]">
               <span className="opacity-0 animate-fade-in">Hi, I'm</span>{" "}
               <span className="text-primary opacity-0 animate-fade-in-delay-1">
                 Abhilash
@@ -34,7 +34,7 @@ const HeroSection = () => {
               </span>
             </h1>
 
-            <p className="text-lg md:text-[1.35rem] text-muted-foreground max-w-2xl md:mx-0 mx-auto opacity-0 animate-fade-in-delay-3 leading-9">
+            <p className="text-base sm:text-lg md:text-[1.35rem] text-muted-foreground max-w-2xl md:mx-0 mx-auto opacity-0 animate-fade-in-delay-3 leading-8 md:leading-9">
               Full Stack Developer (MERN / Next.js) with experience building
               scalable web applications, AI-powered systems, and automation
               workflows. Skilled in React, Node.js, FastAPI, and web scraping
