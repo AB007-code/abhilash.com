@@ -25,7 +25,7 @@ const PROFILE = {
 
 const routeHandler = async (req, res) => {
   try {
-    const { name, email, message } = req.body;
+    const { name, email, message } = req.body || {};
     const uploadedFiles = req.files || [];
 
     if (!name || !email || !message) {

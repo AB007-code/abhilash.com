@@ -6,6 +6,7 @@ import routeHandler from "./routes/router.js";
 dotenv.config();
 
 let port = process.env.PORT || 5000;
+const host = "0.0.0.0";
 const app = express();
 const allowedFileTypes = new Set([
   "image/jpeg",
@@ -93,6 +94,6 @@ app.use((err, _req, res, _next) => {
     message: "Server error while processing the request.",
   });
 });
-app.listen(port, () => {
-  console.log("Backend is running");
+app.listen(port, host, () => {
+  console.log(`Backend is running on ${host}:${port}`);
 });
