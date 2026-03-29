@@ -11,6 +11,13 @@ const escapeHtml = (value = "") =>
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
 
+const formatSentAt = (date = new Date()) =>
+  new Intl.DateTimeFormat("en-IN", {
+    dateStyle: "medium",
+    timeStyle: "short",
+    timeZone: "Asia/Kolkata",
+  }).format(date);
+
 const PROFILE = {
   brand: "Abhilash Portfolio",
   name: "Abhilash Chaurasiya",
@@ -56,10 +63,7 @@ const routeHandler = async (req, res) => {
     const safeRole = escapeHtml(PROFILE.role);
     const safeLocation = escapeHtml(PROFILE.location);
     const safePhone = escapeHtml(PROFILE.phone);
-    const sentAt = new Date().toLocaleString("en-IN", {
-      dateStyle: "medium",
-      timeStyle: "short",
-    });
+    const sentAt = formatSentAt();
     const attachmentSummary = uploadedFiles.length
       ? uploadedFiles
           .map((file) => `${file.originalname} (${Math.round(file.size / 1024)} KB)`)
@@ -198,6 +202,8 @@ const routeHandler = async (req, res) => {
 
 I received your message from my portfolio website. Thank you for getting in touch.
 
+Received at: ${sentAt}
+
 Your message:
 ${message}
 
@@ -216,6 +222,7 @@ ${PROFILE.location}`;
 
 Name: ${name}
 Email: ${email}
+Received: ${sentAt}
 
 Message:
 ${message}${uploadedFiles.length ? `\n\nAttachments:\n${attachmentSummary}` : ""}`;
@@ -252,6 +259,7 @@ ${message}${uploadedFiles.length ? `\n\nAttachments:\n${attachmentSummary}` : ""
     return res.status(200).json({
       success: true,
       message: "Emails sent successfully.",
+      sentAt,
     });
   } catch (err) {
     console.log(err.message);
