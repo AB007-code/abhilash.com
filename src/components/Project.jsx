@@ -81,44 +81,67 @@ const Project = () => {
               key={key}
               className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover"
             >
-              <div className="h-48 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-              </div>
-
-              <div className="p-6">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span className="px-2 py-1 text-xs font-medium border rounded-full bg-primary/20 text-secondary-foreground">
-                      {tag}
-                    </span>
-                  ))}
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="block cursor-pointer"
+              >
+                <div className="h-48 overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  />
                 </div>
-                {/* </div> */}
 
-                <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {project.description}
-                </p>
+                <div className="p-6">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={`${project.title}-${tag}`}
+                        className="px-2 py-1 text-xs font-medium border rounded-full bg-primary/20 text-secondary-foreground"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
 
+                  <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
+                  <p className="text-muted-foreground text-sm mb-4">
+                    {project.description}
+                  </p>
+                </div>
+              </a>
+
+              <div className="px-6 pb-6">
                 <div className="flex justify-between items-center">
-                  <div className="flex spaxe-x-3">
+                  <div className="flex gap-3">
                     <a
                       href={project.demoUrl}
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                      className="group/link relative inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-border/60 bg-background/60 text-foreground/80 transition-all duration-300 hover:border-primary/40 hover:bg-primary/10 hover:text-primary"
                       target="_blank"
+                      rel="noreferrer"
+                      aria-label={`View project ${project.title}`}
+                      title="View Project"
                     >
                       <ExternalLink size={20} />
+                      <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 rounded-md border border-white/10 bg-background/95 px-3 py-1 text-xs font-medium text-foreground opacity-0 shadow-lg transition-all duration-200 group-hover/link:opacity-100">
+                        View Project
+                      </span>
                     </a>
                     <a
                       href={project.githubUrl}
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                      className="group/link relative inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-border/60 bg-background/60 text-foreground/80 transition-all duration-300 hover:border-primary/40 hover:bg-primary/10 hover:text-primary"
                       target="_blank"
+                      rel="noreferrer"
+                      aria-label={`View code for ${project.title}`}
+                      title="View Code"
                     >
                       <Github size={20} />
+                      <span className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 rounded-md border border-white/10 bg-background/95 px-3 py-1 text-xs font-medium text-foreground opacity-0 shadow-lg transition-all duration-200 group-hover/link:opacity-100">
+                        View Code
+                      </span>
                     </a>
                   </div>
                 </div>
